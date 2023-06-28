@@ -1,7 +1,7 @@
-# smart-refrigerator
+# measuring-weight-through-camera
 ### Determining the individual weights of objects seen through the camera with the help of Arduino and weight sensors
 
-The main purpose is to determine the weight of the food in the refrigerator and thus to better track the food inside. 
+The main purpose is to determine the weight of the food in the refrigerator and thus enhance food tracking in smart refrigerators.
 
 ![1](https://user-images.githubusercontent.com/79144571/147954259-fa9a06fa-dab5-4cf0-bfd2-3c03a3023a72.png)
 
@@ -11,14 +11,14 @@ It is possible to calculate the position of an object, placed on a rectangular p
 
 
 
-When an object is added (or removed) to the platform, the position where the change occurred can be calculated by measuring the change in forces at the 4 corners. 
+Calculating the position of an object on a rectangular platform is achievable by considering the object as the center of gravity. As the object's position changes, the forces applied to each corner of the platform also vary accordingly. Whenever an object is added or removed from the platform, it is possible to calculate the position of the change by measuring the force differences at the four corners.
 
-It is also possible to calculate the position of objects via the camera. In my case, I have  a platform which I know the sizes. After recognizing the objects, I calculate their positions by proportioning their positions on the camera to the dimensions of the platform.
-Next, I match the weight-position pairs from the weight sensors with the positions I get from the camera. 
+Utilizing a camera, it is also feasible to calculate the positions of objects. In this case, a known-sized platform is used as a reference. By recognizing the objects within the camera view, their positions can be determined by proportionally mapping their positions to the platform's dimensions. Subsequently, the weight-position pairs obtained from the weight sensors are matched with the camera-derived positions.
 
 ![image](https://user-images.githubusercontent.com/79144571/147956094-5b9c1954-a259-441c-98d7-0c7e7017ad93.png)
 
-I used the most straightforward ways in this project.
-- It uses color contrasts to recognize objects (otsu threshold) 
-- It also finds the shortest quadratic distance to match the positions. Instead, it could use an imaginary grid.
-- Also, adding two objects at the same time will give wrong results. I have a solution for this that requires an 8x8 matrix, but I can barely explain it. 
+#### Discussion for Future Work
+The project employs straightforward techniques to accomplish these tasks.
+- Object recognition relies on color contrast, specifically utilizing the Otsu threshold method.
+- To match the positions, the shortest quadratic distance method is utilized, although an alternative approach involving an imaginary grid could be explored.
+- One challenge to address is the simultaneous addition of two objects, which may lead to incorrect results. I have a solution for this that requires an 8x8 matrix, but I can barely explain it :D 
